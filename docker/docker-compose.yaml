@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  flaskapp:
+    build: .
+    container_name: flaskapp
+    ports:
+      - "5000:5000"
+    volumes:
+      - db_data:/data
+      - .:/app
+    environment:
+      FLASK_APP: app.py
+      FLASK_RUN_HOST: 0.0.0.0
+    command: flask run
+
+volumes:
+  db_data:
